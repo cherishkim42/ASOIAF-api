@@ -29,5 +29,9 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.4.15",
     "nodemon": "^1.18.10"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1"
   }
 }
