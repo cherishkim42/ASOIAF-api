@@ -1,0 +1,16 @@
+const targ = {
+    '1': {
+        'name': ['Aegon Targaryen', 'Jon Snow', 'King in the North'],
+        'house': ['Targaryen', 'Stark'],
+        'allied': ['Daenerys Targaryen', 'House Stark', 'House Arryn'],
+        'against': ['Night King', 'Cersei Lannister'],
+        'status': 'alive'
+    },
+    '2': {
+        'name': ['Daenerys Targaryen'],
+        'house': ['Targaryen'],
+        'allied': ['Jon Snow', 'the Dothraki'],
+        'against': ['Night King', 'Cersei Lannister'],
+        'status': 'alive'
+    }
+}

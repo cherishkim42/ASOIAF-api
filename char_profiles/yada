@@ -1,0 +1,16 @@
+const yada = {
+    '1': {
+        'name': ['Night King'],
+        'house': ['unknown'],
+        'allied': ['the undead'],
+        'against': ['the living'],
+        'status': 'alive'
+    },
+    '2': {
+        'name': ['Gendry'],
+        'house': ['none: bastard-born'],
+        'allied': ['Jon Snow', 'Davis Seaworth'],
+        'against': ['Night King', 'Cersei Lannister'],
+        'status': 'alive'
+    }
+}

@@ -5,23 +5,7 @@ const app = express();
 
 require('dotenv').config();
 
-const dummy = {
-    '1': {
-        'name': ['Aegon Targaryen', 'Jon Snow', 'King in the North'],
-        'house': ['Targaryen', 'Stark'],
-        'allegiance': ['Daenerys Targaryen'],
-        'against': ['Night King', 'Cersei Lannister'],
-        'status': 'alive'
-    },
-    '2': {
-        'id': 2,
-        'name': 'Sansa Stark',
-        'house': ['Stark'],
-        'allegiance': ['Jon Snow'],
-        'against': ['Cersei Lannister', 'Petyr Baelish', 'House Bolton'],
-        'status': 'alive'
-    }
-};
+
 
 // route route
 app.get('/', function (req, res) {
