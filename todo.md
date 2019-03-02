@@ -4,7 +4,6 @@
 1. Write .handlebars files for the above.
 1. Implement user authentication
    1. **_Alter NEW & CREATE routes to require user be auth'd_**
-1. Write Auth tests
 1. Write Auth routes
 1. Write INDEX, DELETE, EDIT routes for profiles.
 1. Put in buttons and links and stuff.
