@@ -26,29 +26,64 @@ describe('Profiles', function () {
         password: 'testing'
     };
 
-})
+    before(function (done) {
+        agent
+            .post('/sign-up')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send(user)
+            .then(function (res) {
+                done();
+            })
+            .catch(function (err) {
+                done(err);
+            });
+    });
 
+    it('Should create a new profile using POST with /profiles/new', function (done) {
+        Profile.estimatedDocumentCount()
+            .then(function (initialDocCount) {
+                agent
+                    .post('/profiles/new')
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .send(newProfile)
+                    .then(function (res) {
+                        Profile.estimatedDocumentCount()
+                            .then(function (newDocCount) {
+                                expect(res).to.have.status(200);
+                                expect(newDocCount).to.be.equal(initialDocCount + 1)
+                                return done();
+                            })
+                            .catch(function (err) {
+                                console.log(err.message)
+                                done(err);
+                            });
+                    }).catch(function (err) {
+                        console.log(err.message)
+                        done(err);
+                    });
+            }).catch(function (err) {
+                console.log(err.message)
+                done(err);
+            })
+    }).catch(function (err) {
+        console.log(err.message)
+        done(err);
+    });
 
+    after(function (done) {
+        Profile.findOneAndDelete(newPost)
+            .then(function (res) {
+                agent.close()
+                User.findOneAndDelete({
+                    username: user.username
+                }).then(function (res) {
+                    done()
+                }).catch(function (err) {
+                    done(err);
+                });
+            }).catch(function (err) {
+                done(err);
+            });
+    });
 
-// lol no
-// const jon = {
-//     'name': ['Jon Snow', 'King in the North', 'Aegon Targaryen'],
-//     'house': ['Targaryen', 'Stark'],
-//     'allied': ['Daenerys Targaryen', 'House Stark', 'House Arryn'],
-//     'against': ['Night King', 'Cersei Lannister'],
-//     'status': 'alive'
-// };
-
-// it('should create new object with name, house, allied, against, and dead/alive status', function () {
-//     const name = jon.name;
-//     const house = jon.house;
-//     const allied = jon.allied;
-//     const against = jon.against;
-//     const status = jon.status;
-//     expect(jon).to.be.a('object')
-//     expect(name).to.be.a('array');
-//     expect(house).to.be.a('array');
-//     expect(allied).to.be.a('array');
-//     expect(status).to.be.a('string');
-//     expect(status).to.equal('alive');
-// });
+});
