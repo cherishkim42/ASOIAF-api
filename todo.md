@@ -1,6 +1,5 @@
 ### Outstanding:
 
-1. Write Profile tests
 1. Write SHOW, NEW, CREATE routes for profiles.
 1. Write .handlebars files for the above.
 1. Implement user authentication
