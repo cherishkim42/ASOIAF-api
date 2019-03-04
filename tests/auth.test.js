@@ -5,8 +5,8 @@ const chaiHttp = require('chai-http');
 const should = chai.should();
 const server = require('../server');
 const agent = chai.request.agent(app);
-const Profile = require('../profile/profile.model.js');
-const User = require('../user/user.model.js');
+const Profile = require('../models/profile.model.js/index.js');
+const User = require('../models/user.model.js');
 
 chai.should();
 chai.use(chaiHttp);

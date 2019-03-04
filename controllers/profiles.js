@@ -1,4 +1,4 @@
-const Profile = require('../profile/profile.controller.js');
+const Profile = require('../models/profile.model.js/index.js');
 const User = require('../user/user.model.js');
 // const express = require('express');
 // const app = express();

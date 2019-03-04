@@ -25,19 +25,21 @@ const app = express();
 assert = require('assert');
 
 require('dotenv').config();
-require('./profile/profile.controller.js')(app);
+require('./data/asoiaf-db'); // db
+require('./controllers/profiles.js/index.js.js')(app);
+require('./controllers/auth.js/index.js.js')(app);
 
 mongoose.Promise = global.Promise;
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/asoiaf-api');
 mongoose.connect(mongoUri, {
     useNewUrlParser: true
 });
-mongoose.connect(
-    'mongodb://janeDoe:<janeDoe>@asoiafapi-cluster-shard-00-00-zuzxt.mongodb.net:27017,asoiafapi-cluster-shard-00-01-zuzxt.mongodb.net:27017,asoiafapi-cluster-shard-00-02-zuzxt.mongodb.net:27017/test?ssl=true&replicaSet=asoiafAPI-cluster-shard-0&authSource=admin&retryWrites=true', {
-        useNewUrlParser: true
-    }).catch(err, function () {
-    throw err;
-}); // db
+// mongoose.connect(
+//     'mongodb://janeDoe:<janeDoe>@asoiafapi-cluster-shard-00-00-zuzxt.mongodb.net:27017,asoiafapi-cluster-shard-00-01-zuzxt.mongodb.net:27017,asoiafapi-cluster-shard-00-02-zuzxt.mongodb.net:27017/test?ssl=true&replicaSet=asoiafAPI-cluster-shard-0&authSource=admin&retryWrites=true', {
+//         useNewUrlParser: true
+//     }).catch(err, function () {
+//     throw err;
+// }); // db
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error: '));
 mongoose.set('debug', true);
 
@@ -52,7 +54,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(expressValidator());
-app.use(checkAuth);
+app.use(authMe);
 app.use(express.static('public'));
 app.listen(3000, () => {
     console.log('App listening on port 3000!')

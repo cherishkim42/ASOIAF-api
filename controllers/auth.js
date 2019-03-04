@@ -1,5 +1,5 @@
-const Profile = require('profile/profile.model.js');
-const User = require('user/user.model.js');
+const Profile = require('./profile/profile.model.js');
+const User = require('./user/user.model.js');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 
