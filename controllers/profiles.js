@@ -51,4 +51,9 @@ router.delete('/profiles/:id/delete', function (req, res) {
     });
 });
 
+//GET Catchall
+router.get('/*', (req, res) => {
+  res.send({ status: 400 })
+})
+
 module.exports = router;

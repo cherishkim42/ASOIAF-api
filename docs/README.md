@@ -1,5 +1,7 @@
-# Headline
+# Game of Thrones Characters API
 
-> An awesome project.
+### Overview
+In your overview, have a basic explanation of what the API does.
 
-hello
+### Endpoints
+Talk about all of the different ways that the user can interact with your database.
