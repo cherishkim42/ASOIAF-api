@@ -22,20 +22,20 @@
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
-    "cookie-parser": "^1.4.4",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "express-handlebars": "^3.0.2",
     "express-validator": "^5.3.1",
     "helper-moment": "^0.2.0",
-    "jsonwebtoken": "^8.5.0",
     "method-override": "^3.0.0",
     "mocha": "^6.0.2",
     "mongoose": "^5.4.15",
     "nodemon": "^1.18.10"
   },
   "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-prettier": "^3.0.1"
   }
 }

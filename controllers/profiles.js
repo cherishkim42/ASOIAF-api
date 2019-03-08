@@ -1,89 +1,42 @@
-const Profile = require('../models/profile.model.js/index.js');
-const User = require('../user/user.model.js');
-// const express = require('express');
-// const app = express();
+const express = require('express');
+const router = express.Router();
+const Profile = require('../models/profile.js');
 
-module.exports = function (app) {
-
-    // index
-    app.get('/', function (req, res) {
-        var currentUser = req.user;
-        console.log(req.cookies);
-        Profile.find().then(function (profiles) {
-            res.render('profiles-index', {
-                profiles,
-                currentUser
-            });
-        }).catch(function (err) {
-            console.log(err.message);
+// INDEX to see all profile documents
+router.get('/profiles', function (req, res) {
+    Profile.find()
+        .then(function (profiles) {
+            res.send(profiles)
         });
+});
+
+// CREATE a new profile document (via Postman, Insomnia)
+router.post('/profiles/new', function (req, res) {
+    const profile = new Profile(req.body)
+    profile.save()
+        .then(function (profile) {
+            res.status(profile._id)
+        });
+});
+
+// SHOW a single profile document
+router.get('/profiles/:id', function (req, res) {
+    Profile.findById(req.params.id).then(function (profile) {
+        res.json(profile)
     });
+});
 
-    // form for new profile
-    app.get('/profiles/new', function (req, res) {
-        res.render('profiles-new', {});
+// UPDATE
+router.put('/profiles/:id', function (req, res) {
+    Profile.findByIdAndUpdate(req.params.id, req.body).then(res.json(profile))
+});
+
+// DELETE
+router.get('/profiles/:id', function (req, res) {
+    Profile.findByIdAndRemove(req.params.id).then(function (profile) {
+        res.redirect('/profiles');
     });
-
-    // generate the new profile
-    app.post('/posts/new', function (req, res) {
-        if (req.user) {
-            let profile = new Profile(req.body);
-            profile.save()
-                .then(function (user) {
-                    user.profiles.unshift(profile);
-                    user.save();
-                    return res.redirect('/posts/' + profile._id);
-                }).catch(function (err) {
-                    console.log(err.message);
-                });
-        } else {
-            return res.status(401);
-        }
-    });
-
-    // show one solitary profile
-    app.get('/profiles/:id', function (req, res) {
-        Profile.findById(req.params.id)
-            .then(function (profile) {
-                res.render('profiles-show', {
-                    profile,
-                    currentUser,
-                    profileId: profile._id,
-                });
-            }).catch(function (err) {
-                console.log(err.message);
-            });
-    });
-
-    // form to edit a profile
-    app.get('/profiles/:id/edit', function (req, res) {
-        Profile.findById(req.params.id),
-            function (err, resource) {
-                res.render('profiles-edit', {
-                    profile: profile
-                });
-            };
-    });
-
-    // solidify the edit
-    app.put('/profiles/:id', function (req, res) {
-        Profile.findByIdAndUpdate(req.params.id, req.body).then(function (profile) {
-                res.redirect('/index');
-            })
-            .catch(function (err) {
-                console.log(err.message)
-            })
-    });
-
-    // delete a profile
-    app.get('profiles/:id', function (req, res) {
-        Profile.findByIdAndRemove(req.params.id)
-            .then(function (profile) {
-                res.redirect('/')
-            }).catch(function (err) {
-                console.log(err.message);
-            });
-    });
+});
 
 
-}
+module.exports = router;

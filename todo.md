@@ -1,16 +1,8 @@
 ### Outstanding:
 
 1. Write INDEX, DELETE, EDIT routes for profiles.
-1. Write .handlebars files for the above.
-1. Implement user authentication
-   1. **_Alter NEW & CREATE routes to require user be auth'd_**
-1. Write Auth routes
 1. Put in buttons and links and stuff.
 1. Design! (LAST PRIORITY. FUNCTIONALITY MATTERS MORE.)
-
-### Ideas:
-
-- Warning pop-up right before user deletes a profile
 
 ### Endpoints:
 
