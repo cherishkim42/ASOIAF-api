@@ -1,10 +1,10 @@
 # Game of Thrones Characters API
 
 ### Overview
-This API
+This is an API of the Game of Thrones characters. Users can see all character profiles, see individual profiles, create new profiles, update profiles, and delete profiles.
 
 ### Endpoints
-* '/profiles' : INDEX. see all existing character profiles
+* '/profiles' : INDEX. See all existing character profiles
 ```json
 [
   {
@@ -335,7 +335,7 @@ This API
   }
   ]
   ```
-* '/profiles/trait?[trait]=[value]', ex. 'profiles/trait?name=Cersei%20Lannister' :
+* '/profiles/trait?[trait]=[value]', ex. 'profiles/trait?name=Cersei%20Lannister' : Show a character by name
 ```json
   [
   {
@@ -362,6 +362,47 @@ This API
     "status": "alive"
   }
 ]```
-* '/profiles/:id' : show a single character profile
-* '/profiles/:id/edit' : edit an existing charater profile
-* '/profiles/:id/delete' : 
+* '/profiles/:id', ex. 'profiles/5c819cf571330ddafadf2c9b' : SHOW a single character profile by ID
+```json
+{
+  "AKA": [
+    "Daenerys Stormborn",
+    "Dany",
+    "the Unburnt",
+    "the Queen of the Great Grass Sea",
+    "Queen of the Andals, the Rhoynar, and the First Men",
+    "Mhysa",
+    "the Dragon Queen"
+  ],
+  "house": [
+    "Targaryen"
+  ],
+  "allies": [
+    "Aegon Targaryen",
+    "the Dothraki"
+  ],
+  "against": [
+    "Night King",
+    "Cersei Lannister"
+  ],
+  "_id": "5c819cf571330ddafadf2c9b",
+  "name": "Daenerys Targaryen",
+  "status": "alive"
+}
+```
+* '/profiles/:id/edit' : edit an existing character profile
+  * include JSON body
+  ```json
+  [
+  {
+    "AKA": ["REVISED nickname(s) if any"],
+    "house": ["REVISED family name(s) if any"],
+    "allies": ["REVISED allies"],
+    "against": ["REVISED enemies"],
+    "_id": "id",
+    "name": "REVISED name",
+    "status": "REVISED either deceased or alive"
+  }
+  ]
+  ```
+* '/profiles/:id/delete' : delete a character profile by ID
