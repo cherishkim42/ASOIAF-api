@@ -2,6 +2,12 @@
 
 https://make-school-courses.github.io/BEW-1.3-Server-Side-Architectures-and-Frameworks/#/Projects/02-Custom-API-Project
 
+### Definitely Wanna Have Done by Next Week
+1. Testing (from Non-Fxnl)
+1. Nested route or resource
+1. Db persistence layer
+1. Look @ Auth + think about how I wanna implement it (_look at Reddit_)
+
 ### Functional Requirements
 1. Nested route or resource
 1. A database persistence layer -- don't need to migrate all existing data; simply set it up such that if we create a new entry (via API calls), it should persist in the db
