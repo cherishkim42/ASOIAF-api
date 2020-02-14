@@ -1,13 +1,16 @@
-### Outstanding:
+# TODO
 
-1. Write INDEX, DELETE, EDIT routes for profiles.
-1. Put in buttons and links and stuff.
-1. Design! (LAST PRIORITY. FUNCTIONALITY MATTERS MORE.)
+https://make-school-courses.github.io/BEW-1.3-Server-Side-Architectures-and-Frameworks/#/Projects/02-Custom-API-Project
 
-### Endpoints:
+### Functional Requirements
+1. Nested route or resource
+1. A database persistence layer -- don't need to migrate all existing data; simply set it up such that if we create a new entry (via API calls), it should persist in the db
+1. Authentication/authorization
+1. Documentation explaining how to use API
+1. Simple, static single page brochure site explaining what the API does and a link to the docs
 
-- '/' : root route (landing page)
-- '/profiles' : index. see all existing character profiles
-- '/profiles/new' : form to make a new profile for a character
-- '/profiles/:id' : show a single character profile
-- '/profiles/:id/edit' : edit an existing character profile
+### Non-functional Requirements
+1. Fully documented
+1. TDD approach
+1. Airbnb
+1. <b>LAST PRIORITY</b> Deployment -- <i>less important</i>
