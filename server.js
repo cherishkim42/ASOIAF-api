@@ -1,21 +1,20 @@
-/* eslint-disable no-console */
-require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
-
-// const port = process.env.PORT || 3000;
 const app = express();
+const port = process.env.PORT || 3000;
+const profilesRouter = require('./controllers/profiles.js')
 
-const profileController = require('./controllers/profiles');
+require('dotenv').config();
+require('./data/asoiaf-db')
 
 mongoose.Promise = global.Promise;
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/asoiaf-api');
-mongoose.connect(process.env.ATLAS_CONNECTION, {
-  useNewUrlParser: true,
-});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/asoiaf-db');
+// mongoose.connect(process.env.ATLAS_CONNECTION, {
+//   useNewUrlParser: true,
+// });
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error: '));
 mongoose.set('debug', true);
 
@@ -27,9 +26,8 @@ app.use(bodyParser.urlencoded({
 app.use(expressValidator());
 app.use(express.static('public'));
 
-app.use('/', profileController);
+app.use('/profiles', profilesRouter)
 
-const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log('App listening on port 3000!');
 });

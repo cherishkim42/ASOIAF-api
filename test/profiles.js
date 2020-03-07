@@ -1,14 +1,20 @@
+// Don't use agent... it's not working.... or maybe I can't call app?
+
 process.env.NODE_ENV = 'test'
 
-let Profile = require('../models/profile')
+// const app = require("./../server");
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const mocha = require('mocha');
+const should = chai.should();
+const expect = chai.expect;
 
-let server = require('../server')
-let chai = require('chai')
-let chaiHttp = require('chai-http')
-let mocha = require('mocha')
-let should = chai.should()
+const Profile = require('../models/profile');
+const server = require('../server');
+// const agent = chai.request.agent(app);
 
-chai.use(chaiHttp)
+chai.should();
+chai.use(chaiHttp);
 
 describe('Profiles', () => {
     it('should GET all the profiles', (done) => {
