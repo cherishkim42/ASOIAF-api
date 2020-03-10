@@ -14,7 +14,7 @@ Currently, this API has one resource: **Profiles**, with each Profile containing
 
 * <b>Sign Up</b> at ```http://localhost:3000/sign-up``` with parameters for <b>Username</b> and <b>Password</b>
 * <b>Log In</b> at ```http://localhost:3000/login```
-* <b>Log Out<b> at ```http://localhost:3000/logout```
+* <b>Log Out</b> at ```http://localhost:3000/logout```
 
 ## CREATE a new Profile
 
