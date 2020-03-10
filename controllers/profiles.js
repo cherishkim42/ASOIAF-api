@@ -1,20 +1,12 @@
 const express = require('express');
-
 const router = express.Router();
 const Profile = require('../models/profile.js');
+const User = require('../models/user.js');
 
 // INDEX to see all profile documents
 router.get('/', (req, res) => {
   Profile.find().then((profiles) => {
     res.send(profiles);
-  });
-});
-
-// CREATE a new profile document (via Postman, Insomnia)
-router.post('/new', (req, res) => {
-  let profile = new Profile(req.body);
-  profile.save().then((profile) => {
-    res.status(200).json(profile);
   });
 });
 
@@ -25,6 +17,22 @@ router.get('/:id', (req, res) => {
   });
 });
 
+// CREATE a new profile document (via Postman, Insomnia)
+router.post('/new', (req, res) => {
+  if (req.user) {
+    // console.log(profile)
+    let profile = new Profile(req.body);
+    profile.save()
+      .then(profile => {
+        return res.status(200).json(profile);
+      }).catch(err => {
+        console.log(err.message);
+      });
+  } else {
+    return res.status(401);
+  }
+});
+
 // UPDATE
 router.put('/:id/edit', (req, res) => {
   Profile.findByIdAndUpdate(req.params.id, req.body)
@@ -32,6 +40,7 @@ router.put('/:id/edit', (req, res) => {
       res.send({ status: 200 });
     });
 });
+
 
 // DELETE
 router.delete('/:id/delete', (req, res) => {
@@ -47,12 +56,3 @@ router.get('/*', (req, res) => {
 });
 
 module.exports = router;
-
-// // SHOW profiles based on a single trait
-// router.get('/trait', (req, res) => {
-//   console.log(req.query);
-//   Profile.find(req.query)
-//     .then((profiles) => {
-//       res.send(profiles);
-//     });
-// });

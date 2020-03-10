@@ -3,32 +3,18 @@ const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    createdAt: {
-        type: Date
-    },
-    updatedAt: {
-        type: Date
-    },
     password: {
         type: String,
+        required: true
     },
     username: {
         type: String,
         required: true
     },
-    characters: [{
-        type: Schema.Types.ObjectId,
-        ref: "Profile"
-    }]
 });
 
 // MUST use fxn here! ES6 => fxns DO NOT bind this!
 UserSchema.pre("save", function (next) { // Define the callback w/ a regular fxn to avoid problems w/ this
-    const now = new Date(); // Set "createdAt" & "updatedAt"
-    this.updatedAt = now;
-    if (!this.createdAt) {
-        this.createdAt = now;
-    }
 
     // Encrypt password
     const user = this;
