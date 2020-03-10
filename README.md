@@ -22,25 +22,25 @@ Currently, this API has one resource: **Profiles**, with each Profile containing
 
 Pass in parameters for NAME, AKA (_as in nicknames_), HOUSE, ALLIES, AGAINST (_as in enemies_), and STATUS (_as in alive or dead_).
 
-### READ the indexed Profiles
+## READ the indexed Profiles
 
 ```http://localhost:3000/profiles```
 
 View all existing profiles in the database.
 
-### READ a single Profile
+## READ a single Profile
 
 ```http://localhost:3000/profiles/:id```
 
 View a single profile based on that profile's ID.
 
-### UPDATE a Profile's data
+## UPDATE a Profile's data
 
 ```http://localhost:3000/profiles/:id/edit```
 
 Tweak a profile's data, using the ```:id``` parameter to track it down.
 
-### DELETE a Profile
+## DELETE a Profile
 
 ```http://localhost:3000/profiles/:id/delete```
 
